@@ -56,3 +56,24 @@ mix test
   end
 
 ```
+
+
+用 Pattern Matching就是爽啊，对比下：
+
+```elixir
+  def subst_in_scheme(new, old, lat) do
+    cond do
+      null? lat -> []
+      eq? car(lat), old -> cons(new, cdr(lat))
+      true -> cons(car(lat),
+                   subst_in_scheme(new, old, cdr(lat)))
+    end
+  end
+  def subst(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | rest] -> [new | rest]
+      [head | rest] -> [head | subst(new, old, rest)]
+    end
+  end
+```

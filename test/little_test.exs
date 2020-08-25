@@ -62,4 +62,15 @@ defmodule LittleTest do
     assert insertL(:a, :b, [:b]) == [:a, :b]
     assert insertL(:e, :f, [:a, :b, :c, :d, :f, :g]) == [:a, :b, :c, :d, :e, :f, :g]
   end
+
+  test "test subst" do
+
+    assert subst_in_scheme(:a, :b, []) == []
+    assert subst_in_scheme(:a, :b, [:c]) == [:c]
+    assert subst_in_scheme(:a, :b, [:c, :b, :e]) == [:c, :a, :e]
+
+    assert subst(:a, :b, []) == []
+    assert subst(:a, :b, [:c]) == [:c]
+    assert subst(:a, :b, [:c, :b, :e]) == [:c, :a, :e]
+  end
 end
