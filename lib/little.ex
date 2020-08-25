@@ -68,4 +68,24 @@ defmodule Little do
                     firsts(cdr(lat))
     end
   end
+
+  def insertR(new, old, lat) do
+    cond do
+      null? lat -> []
+      eq? car(lat), old -> cons(old,
+                                cons(new,
+                                    cdr(lat)))
+      true -> cons(car(lat),
+                   insertR(new, old, cdr(lat)))
+    end
+  end
+
+  # 忍不住用 Pattern Matching， 清楚多了
+  def insertL(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | _cdr_of_old] -> [new | lat]
+      [h | cdr_of_old] -> [h | insertL(new, old, cdr_of_old)]
+    end
+  end
 end

@@ -50,4 +50,16 @@ defmodule LittleTest do
     assert firsts([]) == []
     assert firsts([[:a, :b], [:c, :d], [:e]]) == [:a, :c, :e]
   end
+
+  test "test chapter 3, insertR" do
+    assert insertR(:topping, :fudge, [:ice, :cream, :with, :fudge, :for, :dessert]) ==
+      [:ice, :cream, :with, :fudge, :topping, :for, :dessert]
+
+  end
+
+  test "test chapter 3, insertL" do
+    assert insertL(:a, :b, []) == []
+    assert insertL(:a, :b, [:b]) == [:a, :b]
+    assert insertL(:e, :f, [:a, :b, :c, :d, :f, :g]) == [:a, :b, :c, :d, :e, :f, :g]
+  end
 end

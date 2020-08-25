@@ -14,7 +14,7 @@
 mix test
 ```
 
-用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元编程的挑战，看看能不能用macro，把 elixir改造的更像scheme（好无聊）
+用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元编程的挑战，看看能不能用macro，把 elixir改造的更像scheme。好无聊，后面写着写着就忍不住用Pattern Matching了，何苦自虐呢。
 
 ```elixir
   def lat?(l) do
@@ -34,4 +34,25 @@ mix test
               member?(a, cdr(lat))
     end
   end
+  
+  def insertR(new, old, lat) do
+    cond do
+      null? lat -> []
+      eq? car(lat), old -> cons(old,
+                                cons(new,
+                                    cdr(lat)))
+      true -> cons(car(lat),
+                   insertR(new, old, cdr(lat)))
+    end
+  end
+
+  # 忍不住用 Pattern Matching， 清楚多了
+  def insertL(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | _cdr_of_old] -> [new | lat]
+      [h | cdr_of_old] -> [h | insertL(new, old, cdr_of_old)]
+    end
+  end
+
 ```
