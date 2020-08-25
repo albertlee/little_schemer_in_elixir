@@ -4,17 +4,17 @@
 
 《The Little Schemer》 in Elixir.
 
-个人的练习项目。
+个人的练习项目。复习 Little Schemer里的递归处理的思路，同时练习熟悉 Elixir 里的方便语法。用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元编程的挑战，看看能不能用macro，把 elixir改造的更像scheme。好无聊，后面写着写着就忍不住用Pattern Matching了，何苦自虐呢。
 
 代码在 lib/little.ex 里，示例程序在 test/little_test.exs里。
 
-执行：
+程序执行：
 
 ```shell
 mix test
-```
 
-用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元编程的挑战，看看能不能用macro，把 elixir改造的更像scheme。好无聊，后面写着写着就忍不住用Pattern Matching了，何苦自虐呢。
+iex -S mix
+```
 
 ```elixir
   def lat?(l) do
@@ -57,7 +57,6 @@ mix test
 
 ```
 
-
 用 Pattern Matching就是爽啊，对比下：
 
 ```elixir
@@ -77,3 +76,4 @@ mix test
     end
   end
 ```
+

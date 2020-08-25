@@ -73,4 +73,9 @@ defmodule LittleTest do
     assert subst(:a, :b, [:c]) == [:c]
     assert subst(:a, :b, [:c, :b, :e]) == [:c, :a, :e]
   end
+  test "test subst2" do
+    assert subst2(:a, :b, :c, []) == []
+    assert subst2(:a, :b, :c, [:c]) == [:a]
+    assert subst2(:a, :b, :c, [:c, :b, :e]) == [:a, :b, :e]
+  end
 end

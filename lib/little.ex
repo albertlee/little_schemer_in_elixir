@@ -104,4 +104,13 @@ defmodule Little do
       [head | rest] -> [head | subst(new, old, rest)]
     end
   end
+
+  def subst2(new, o1, o2, lat) do
+    case lat do
+      [] -> []
+      [head | rest] when head in [o1, o2] -> [new | rest]
+      [head | rest] -> [head | subst2(new, o1, o2, rest)]
+    end
+  end
+
 end
