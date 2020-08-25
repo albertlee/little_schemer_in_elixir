@@ -39,5 +39,33 @@ defmodule Little do
   end
 
   ## Chapter 3
+  def rember_v1(a, lat) do
+    cond do
+      null? lat -> []
+      true -> cond do
+        eq?(car(lat), a) -> cdr lat
+        true -> rember_v1(a, cdr(lat))
+      end
+    end
+  end
 
+  #defdelegate rember(a, lat), to: __MODULE__, as: :rember_v1
+
+  def rember(a, lat) do
+    cond do
+      null? lat -> []
+      eq?(car(lat), a) -> cdr lat
+      true -> cons(car(lat),
+                   rember(a, cdr(lat)))
+
+    end
+  end
+
+  def firsts(lat) do
+    cond do
+      null? lat -> []
+      true -> cons car(car(lat)),
+                    firsts(cdr(lat))
+    end
+  end
 end

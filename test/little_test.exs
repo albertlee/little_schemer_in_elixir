@@ -32,4 +32,22 @@ defmodule LittleTest do
     assert member?(:a, [:a, :b]) == true
     assert member?(:a, [:b, :c]) == false
   end
+
+  test "test chapter 3, rember v1, error version" do
+    assert rember_v1(:a, [:a, :b, :c]) == [:b, :c]
+    assert rember_v1(:a, []) == []
+    assert rember_v1(:a, [:b]) == []
+    assert rember_v1(:b, [:a, :b, :c]) == [:c]
+  end
+  test "test chapter 3, rember" do
+    assert rember(:a, [:a, :b, :c]) == [:b, :c]
+    assert rember(:a, []) == []
+    assert rember(:a, [:b]) == [:b]
+    assert rember(:b, [:a, :b, :c]) == [:a, :c]
+  end
+
+  test "test chapter 3, firsts" do
+    assert firsts([]) == []
+    assert firsts([[:a, :b], [:c, :d], [:e]]) == [:a, :c, :e]
+  end
 end
