@@ -14,7 +14,7 @@
 mix test
 ```
 
-用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元变成的挑战，看看能不能用macro，把 elixir改造的更像scheme（好无聊）
+用Elixir语法上不能做到与书里的Scheme完全对应，主要是练个思路。倒是可以作为一个元编程的挑战，看看能不能用macro，把 elixir改造的更像scheme（好无聊）
 
 ```elixir
   def lat?(l) do
