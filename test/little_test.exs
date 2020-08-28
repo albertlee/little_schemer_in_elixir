@@ -78,4 +78,28 @@ defmodule LittleTest do
     assert subst2(:a, :b, :c, [:c]) == [:a]
     assert subst2(:a, :b, :c, [:c, :b, :e]) == [:a, :b, :e]
   end
+
+  test "test multirember" do
+    assert multirember(:a, [:a]) == []
+    assert multirember(:a, [:a, :a]) == []
+    assert multirember(:a, [:b, :a, :a]) == [:b]
+  end
+
+  test "test multiinsertR" do
+    assert multiinsertR(:a, :b, [:b, :c, :b]) == [:b, :a, :c, :b, :a]
+    assert multiinsertR(:a, :b, [:c]) == [:c]
+    assert multiinsertR(:a, :b, []) == []
+  end
+
+  test "test multiinsertL" do
+    assert multiinsertL(:a, :b, [:b, :c, :b]) == [:a, :b, :c, :a, :b]
+    assert multiinsertL(:a, :b, [:c]) == [:c]
+    assert multiinsertL(:a, :b, []) == []
+  end
+
+  test "test multisubst" do
+    assert multisubst(:a, :b, [:b, :c, :b]) == [:a, :c, :a]
+    assert multisubst(:a, :b, [:c]) == [:c]
+    assert multisubst(:a, :b, []) == []
+  end
 end

@@ -113,4 +113,35 @@ defmodule Little do
     end
   end
 
+  def multirember(a, lat) do
+    case lat do
+      [] -> []
+      [^a | rest] -> multirember(a, rest)
+      [head | rest] -> [head | multirember(a, rest)]
+    end
+  end
+
+  def multiinsertR(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | rest] -> [old, new | multiinsertR(new, old, rest)]
+      [head | rest] -> [head | multiinsertR(new, old, rest)]
+    end
+  end
+
+  def multiinsertL(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | rest] -> [new, old | multiinsertL(new, old, rest)]
+      [head | rest] -> [head | multiinsertL(new, old, rest)]
+    end
+  end
+
+  def multisubst(new, old, lat) do
+    case lat do
+      [] -> []
+      [^old | rest] -> [new | multisubst(new, old, rest)]
+      [head | rest] -> [head | multisubst(new, old, rest)]
+    end
+  end
 end
